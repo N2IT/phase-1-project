@@ -14,10 +14,22 @@ document.addEventListener('DOMContentLoaded', () => {
     function getCompendium(){
         fetch('https://botw-compendium.herokuapp.com/api/v3/compendium/all')
         .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(error => console.error(error))
+        .then(allItems => {
+            for(let key in allItems){
+                allItems[key].forEach((e) => renderAll(e))
+            }   
+        })
+            
+            .catch(error => console.error(error))
+        debugger
     }
-    getCompendium()
+    
+    //renderAll
+    function renderAll(item){
+        
+        console.log(item)
+    }
+
     //FETCH
     function getCreatures(){
         fetch('https://botw-compendium.herokuapp.com/api/v3/compendium/category/creatures')
@@ -53,4 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => console.log(data))
         .catch(error => console.log(error))
     }
+
+    //Initial Render
+    //Get Data and render to DOM
+    function initialize(){
+        getCompendium()
+    }
+    initialize()
 })
