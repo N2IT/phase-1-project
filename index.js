@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //fetch search form input string value
     //send to render function
     function processInputString(value) {
-        console.log(value)
         fetch(`https://botw-compendium.herokuapp.com/api/v3/compendium/entry/${value.name}`)
             .then(res => res.json())
             .then(searchName => {
@@ -55,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error(error))
     }
 
-    //renderAll
+    //render to DOM
     function renderAll(item) {
         let card = document.createElement('card')
         let img = document.createElement('img')
@@ -68,41 +67,64 @@ document.addEventListener('DOMContentLoaded', () => {
         card.append(img, h2, p)
     }
 
-    //handle
-
     //FETCH
     function getCreatures() {
+        div.innerHTML = ''
         fetch('https://botw-compendium.herokuapp.com/api/v3/compendium/category/creatures')
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                for(let key in data){
+                    data[key].forEach((e) => renderAll(e))
+                }
+            })
             .catch(error => console.log(error))
     }
 
     function getEquipment() {
+        div.innerHTML = ''
         fetch('https://botw-compendium.herokuapp.com/api/v3/compendium/category/equipment')
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                for(let key in data){
+                    data[key].forEach((e) => renderAll(e))
+                }
+            })
             .catch(error => console.log(error))
     }
 
     function getMaterials() {
+        div.innerHTML = ''
         fetch('https://botw-compendium.herokuapp.com/api/v3/compendium/category/materials')
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                for(let key in data){
+                    data[key].forEach((e) => renderAll(e))
+                }
+            })
             .catch(error => console.log(error))
     }
 
     function getMonsters() {
+        div.innerHTML = ''
         fetch('https://botw-compendium.herokuapp.com/api/v3/compendium/category/monsters')
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                for(let key in data){
+                    data[key].forEach((e) => renderAll(e))
+                }
+            })
             .catch(error => console.log(error))
     }
 
     function getTreasures() {
+        div.innerHTML = ''
         fetch('https://botw-compendium.herokuapp.com/api/v3/compendium/category/treasure')
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                for(let key in data){
+                    data[key].forEach((e) => renderAll(e))
+                }
+            })
             .catch(error => console.log(error))
     }
 
