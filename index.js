@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    //event listeners
+
+    const div = document.getElementById('items')
+    let allNames = []
+
+    
     //Categories
     document.getElementById('creatures').addEventListener('click', getCreatures)
     document.getElementById('equipment').addEventListener('click', getEquipment)
@@ -10,32 +14,33 @@ document.addEventListener('DOMContentLoaded', () => {
     //SearchBar
     let form = document.querySelector('#compendium-form')
     form.addEventListener('submit', handleSubmit)
-
+    
+    //submit event from Searchbar
     function handleSubmit(e) {
+        div.innerHTML = ''
         e.preventDefault()
         let searchValue = {
-            name: e.target.search.value
+            name: e.target.search.value.toLowerCase()
         }
         processInputString(searchValue)
         form.reset()
         // debugger
     }
 
+    //fetch search form input string value
+    //send to render function
     function processInputString(value) {
-        fetch(`https://botw-compendium.herokuapp.com/api/v3/compendium/all`, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/vnd.github.v3+json',
-            }
-        })
+        console.log(value)
+        fetch(`https://botw-compendium.herokuapp.com/api/v3/compendium/entry/${value.name}`)
             .then(res => res.json())
             .then(searchName => {
-                for (let key in searchName) {
-                    searchName[key].name.forEach((e) => renderAll(e))
+                for(let key in searchName){
+                renderAll(searchName[key])
                 }
             })
-            debugger
             .catch(error => console.error(error))
+            debugger
+            
     }
 
     //FETCH compendium API
@@ -52,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //renderAll
     function renderAll(item) {
-        let div = document.getElementById('items')
         let card = document.createElement('card')
         let img = document.createElement('img')
         let h2 = document.createElement('h2')
