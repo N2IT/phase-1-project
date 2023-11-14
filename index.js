@@ -8,7 +8,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('treasures').addEventListener('click', getTreasures)
 
     //SearchBar
-    document.getElementById('search').addEventListener('input', () => console.log('hello'))
+    let search = document.getElementById('search')
+    search.addEventListener('input', (e) => {
+        let searchValue = e.target.value
+        processInputString(searchValue)
+    })
+
+    //findItem via Search
+    function processInputString(event){
+        console.log(event)
+    }
 
     //FETCH compendium API
     function getCompendium(){
@@ -19,16 +28,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 allItems[key].forEach((e) => renderAll(e))
             }   
         })
-            
-            .catch(error => console.error(error))
+        .catch(error => console.error(error))
         debugger
     }
     
     //renderAll
     function renderAll(item){
-        
-        console.log(item)
+        let div = document.getElementById('items')
+        let card = document.createElement('card')
+        let img = document.createElement('img')
+        let h2 = document.createElement('h2')
+        let p = document.createElement('p')
+        img.src = item.image
+        h2.textContent = `Name: ${item.name}`
+        p.textContent = `Category: ${item.category}`
+        div.appendChild(card)
+        card.append(img, h2, p)
     }
+
+    //handle
 
     //FETCH
     function getCreatures(){
