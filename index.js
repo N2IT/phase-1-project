@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let dlc = document.createElement('h6')
         dlc.textContent = `Dlc: ${singleItem.dlc}`
         div.appendChild(pageCard)
-        pageCard.append(h2, description, locations, drops, dlc)
+        pageCard.append(img, h2, description, locations, drops, dlc)
         // p.appendChild(img)
         // p.appendChild(h2)
         // p.appendChild(description)
