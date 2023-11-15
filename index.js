@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const div = document.getElementById('items')
-    let allNames = []
-
 
     //Categories
     document.getElementById('creatures').addEventListener('click', getCreatures)
@@ -43,6 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     //FETCH compendium API
+    //header image event listener
+    let headerImage = document.getElementById('header-logo')
+    headerImage.addEventListener('click', getCompendium)
+    
     function getCompendium() {
         fetch('https://botw-compendium.herokuapp.com/api/v3/compendium/all')
             .then(res => res.json())
