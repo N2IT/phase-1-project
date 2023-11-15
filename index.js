@@ -36,11 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             })
             .catch(error => console.error(error))
-        debugger
-
     }
 
-    
     //header image event listener
     //click header logo to refresh search
     let headerImage = document.getElementById('header-logo')
@@ -58,11 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     allItems[key].forEach((e) => renderAll(e))
                 }
             })
-            .catch(error => console.error(error))
-        
+            .catch(error => console.error(error))   
     }
 
-    //render to DOM
+    //render items to DOM
     function renderAll(item) {
         let card = document.createElement('card')
         card.setAttribute('data-itemName', item.name)
@@ -99,24 +95,24 @@ document.addEventListener('DOMContentLoaded', () => {
         let pageCard = document.createElement('page-card')
         let h2 = document.createElement('h2')
         h2.textContent = `Name: ${singleItem.name.toUpperCase()}`
-        let description = document.createElement('description')
+        let description = document.createElement('h3')
         description.textContent = `Description: ${singleItem.description}`
-        let locations = document.createElement('locations')
+        let locations = document.createElement('h4')
         let br = document.createElement('br')
         br.innerHTML = `<br />`
         locations.textContent = `Common Location(s): ${singleItem.common_locations}`
-        let drops = document.createElement('drops')
+        let drops = document.createElement('h5')
         drops.textContent = `Items Dropped: ${singleItem.drops}`
-        let dlc = document.createElement('dlc')
+        let dlc = document.createElement('h6')
         dlc.textContent = `Dlc: ${singleItem.dlc}`
         div.appendChild(pageCard)
-        pageCard.append(p)
-        p.appendChild(img)
-        p.appendChild(h2)
-        p.appendChild(description)
-        p.appendChild(locations)
-        p.appendChild(drops)
-        p.appendChild(dlc)
+        pageCard.append(h2, description, locations, drops, dlc)
+        // p.appendChild(img)
+        // p.appendChild(h2)
+        // p.appendChild(description)
+        // p.appendChild(locations)
+        // p.appendChild(drops)
+        // p.appendChild(dlc)
         // pageCard.append(img, h2, description, br, locations, dlc)
 
     }
