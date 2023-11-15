@@ -53,6 +53,7 @@ li {
 
 li>img{
     box-shadow: 3px 3px 5px #666;
+    transition: ease-in-out 330ms;
 }
 
 li>img:hover {
