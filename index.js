@@ -105,8 +105,12 @@ document.addEventListener('DOMContentLoaded', () => {
         drops.textContent = `Items Dropped: ${singleItem.drops}`
         let dlc = document.createElement('h6')
         dlc.textContent = `Dlc: ${singleItem.dlc}`
+        let button = document.createElement('button')
+        button.id = "refresh"
+        button.textContent = "Refresh Content"
+        button.addEventListener('click', getCompendium)
         div.appendChild(pageCard)
-        pageCard.append(img, h2, description, locations, drops, dlc)
+        pageCard.append(img, h2, description, locations, drops, dlc, button)
         // p.appendChild(img)
         // p.appendChild(h2)
         // p.appendChild(description)
