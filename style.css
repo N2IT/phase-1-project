@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+body {
+    padding: 3%;
+}
+
 header, form {
     text-align: center;
 }
@@ -58,7 +62,7 @@ page-card {
     box-shadow: 3px 3px 5px #666;
 }
 
-page-care > img {
+page-card > img {
     border-radius: 5px;
     border: 1px solid #ccc090;
 }
