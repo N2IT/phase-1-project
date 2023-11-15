@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const div = document.getElementById('items')
     let allNames = []
 
-    
+
     //Categories
     document.getElementById('creatures').addEventListener('click', getCreatures)
     document.getElementById('equipment').addEventListener('click', getEquipment)
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //SearchBar
     let form = document.querySelector('#compendium-form')
     form.addEventListener('submit', handleSubmit)
-    
+
     //submit event from Searchbar
     function handleSubmit(e) {
         div.innerHTML = ''
@@ -33,13 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(`https://botw-compendium.herokuapp.com/api/v3/compendium/entry/${value.name}`)
             .then(res => res.json())
             .then(searchName => {
-                for(let key in searchName){
-                renderAll(searchName[key])
+                for (let key in searchName) {
+                    renderAll(searchName[key])
                 }
             })
             .catch(error => console.error(error))
-            debugger
-            
+        debugger
+
     }
 
     //FETCH compendium API
@@ -52,11 +52,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             })
             .catch(error => console.error(error))
+        
     }
 
     //render to DOM
     function renderAll(item) {
         let card = document.createElement('card')
+        card.setAttribute('data-itemName', item.name)
+        card.addEventListener('click', () => {
+            const itemName = card.getAttribute('data-itemName')
+            fetch(`https://botw-compendium.herokuapp.com/api/v3/compendium/entry/${itemName}`)
+            .then(res => res.json())
+            .then((clickedName) => {
+                for (let key in clickedName) {
+                    singleItemRender(clickedName[key])
+                }
+            })
+            .catch(error => console.error(error))
+            // console.log(itemName)
+        })
         let img = document.createElement('img')
         let h2 = document.createElement('h2')
         let p = document.createElement('p')
@@ -65,6 +79,13 @@ document.addEventListener('DOMContentLoaded', () => {
         p.textContent = `Category: ${item.category}`
         div.appendChild(card)
         card.append(img, h2, p)
+
+    }
+
+    //Single Item Render when any card is clicked
+    function singleItemRender(singleItem){
+        div.innerHTML = ''
+        console.log(singleItem)
     }
 
     //FETCH
@@ -73,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('https://botw-compendium.herokuapp.com/api/v3/compendium/category/creatures')
             .then(res => res.json())
             .then(data => {
-                for(let key in data){
+                for (let key in data) {
                     data[key].forEach((e) => renderAll(e))
                 }
             })
@@ -85,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('https://botw-compendium.herokuapp.com/api/v3/compendium/category/equipment')
             .then(res => res.json())
             .then(data => {
-                for(let key in data){
+                for (let key in data) {
                     data[key].forEach((e) => renderAll(e))
                 }
             })
@@ -97,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('https://botw-compendium.herokuapp.com/api/v3/compendium/category/materials')
             .then(res => res.json())
             .then(data => {
-                for(let key in data){
+                for (let key in data) {
                     data[key].forEach((e) => renderAll(e))
                 }
             })
@@ -109,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('https://botw-compendium.herokuapp.com/api/v3/compendium/category/monsters')
             .then(res => res.json())
             .then(data => {
-                for(let key in data){
+                for (let key in data) {
                     data[key].forEach((e) => renderAll(e))
                 }
             })
@@ -121,12 +142,13 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('https://botw-compendium.herokuapp.com/api/v3/compendium/category/treasure')
             .then(res => res.json())
             .then(data => {
-                for(let key in data){
+                for (let key in data) {
                     data[key].forEach((e) => renderAll(e))
                 }
             })
             .catch(error => console.log(error))
     }
+
 
     //Initial Render
     //Get Data and render to DOM
@@ -134,4 +156,10 @@ document.addEventListener('DOMContentLoaded', () => {
         getCompendium()
     }
     initialize()
+
 })
+
+
+// //EventListener to cards // THIS IS NOT THE PLACE FOR THIS
+// let cards = document.querySelectorAll('card')
+// cards.forEach((e) => e.addEventListener('click', () => console.log('click')))
