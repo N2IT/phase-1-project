@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         processInputString(searchValue)
         form.reset()
-        // debugger
     }
 
     //fetch search form input string value
@@ -72,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             })
             .catch(error => console.error(error))
-            // console.log(itemName)
         })
         let img = document.createElement('img')
         let h2 = document.createElement('h2')
@@ -88,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //Single Item Render when any card is clicked
     function singleItemRender(singleItem){
         div.innerHTML = ''
-        console.log(singleItem)
         let p = document.createElement('p')
         let img = document.createElement('img')
         img.src = singleItem.image
@@ -114,14 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         div.appendChild(pageCard)
         pageCard.append(img, h2, description, locations, drops, dlc, button)
-        // p.appendChild(img)
-        // p.appendChild(h2)
-        // p.appendChild(description)
-        // p.appendChild(locations)
-        // p.appendChild(drops)
-        // p.appendChild(dlc)
-        // pageCard.append(img, h2, description, br, locations, dlc)
-
     }
 
     //FETCH
@@ -192,10 +181,4 @@ document.addEventListener('DOMContentLoaded', () => {
         getCompendium()
     }
     initialize()
-
 })
-
-
-// //EventListener to cards // THIS IS NOT THE PLACE FOR THIS
-// let cards = document.querySelectorAll('card')
-// cards.forEach((e) => e.addEventListener('click', () => console.log('click')))
