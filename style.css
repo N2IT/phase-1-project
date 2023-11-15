@@ -28,3 +28,7 @@ li {
     display: flex;
     flex-wrap: wrap;
 }
+
+card {
+    padding: 2%;
+}
