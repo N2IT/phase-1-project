@@ -42,8 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     //header image event listener
+    //click header logo to refresh search
     let headerImage = document.getElementById('header-logo')
-    headerImage.addEventListener('click', getCompendium)
+    headerImage.addEventListener('click', () =>{
+        div.innerHTML = ''
+        getCompendium()
+    })
 
     //FETCH compendium API
     function getCompendium() {
@@ -89,15 +93,31 @@ document.addEventListener('DOMContentLoaded', () => {
     function singleItemRender(singleItem){
         div.innerHTML = ''
         console.log(singleItem)
+        let p = document.createElement('p')
+        let img = document.createElement('img')
+        img.src = singleItem.image
         let pageCard = document.createElement('page-card')
         let h2 = document.createElement('h2')
         h2.textContent = `Name: ${singleItem.name.toUpperCase()}`
         let description = document.createElement('description')
         description.textContent = `Description: ${singleItem.description}`
         let locations = document.createElement('locations')
+        let br = document.createElement('br')
+        br.innerHTML = `<br />`
         locations.textContent = `Common Location(s): ${singleItem.common_locations}`
+        let drops = document.createElement('drops')
+        drops.textContent = `Items Dropped: ${singleItem.drops}`
+        let dlc = document.createElement('dlc')
+        dlc.textContent = `Dlc: ${singleItem.dlc}`
         div.appendChild(pageCard)
-        pageCard.append(h2, description, locations)
+        pageCard.append(p)
+        p.appendChild(img)
+        p.appendChild(h2)
+        p.appendChild(description)
+        p.appendChild(locations)
+        p.appendChild(drops)
+        p.appendChild(dlc)
+        // pageCard.append(img, h2, description, br, locations, dlc)
 
     }
 
