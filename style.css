@@ -21,14 +21,30 @@ ul {
 
 li {
     display: flex;
-    padding: 2%
+    padding: 2%;
+}
+
+li>img{
+    box-shadow: 3px 3px 5px #666;
 }
 
 #items {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 10px;
+    column-gap: 10px;
 }
 
 card {
     padding: 2%;
+    text-align: center;
+    border: 1px solid #252525;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px #666;
+}
+
+card > img {
+    border-radius: 5px;
+    border: 1px solid #ccc090;
 }
