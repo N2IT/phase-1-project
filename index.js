@@ -108,7 +108,10 @@ document.addEventListener('DOMContentLoaded', () => {
         let button = document.createElement('button')
         button.id = "refresh"
         button.textContent = "Refresh Content"
-        button.addEventListener('click', getCompendium)
+        button.addEventListener('click', () => {
+            div.innerHTML = ''
+            getCompendium
+        })
         div.appendChild(pageCard)
         pageCard.append(img, h2, description, locations, drops, dlc, button)
         // p.appendChild(img)
