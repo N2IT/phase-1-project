@@ -53,4 +53,12 @@ page-card {
     max-width: 600px;
     text-align: center;
     padding: 2%;
+    border: 1px solid #252525;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px #666;
+}
+
+page-care > img {
+    border-radius: 5px;
+    border: 1px solid #ccc090;
 }
