@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.textContent = "Refresh Content"
         button.addEventListener('click', () => {
             div.innerHTML = ''
-            getCompendium
+            getCompendium()
         })
         div.appendChild(pageCard)
         pageCard.append(img, h2, description, locations, drops, dlc, button)
