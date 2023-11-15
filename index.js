@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let h2 = document.createElement('h2')
         let p = document.createElement('p')
         img.src = item.image
-        h2.textContent = `Name: ${item.name}`
+        h2.textContent = `Name: ${item.name.toUpperCase()}`
         p.textContent = `Category: ${item.category}`
         div.appendChild(card)
         card.append(img, h2, p)

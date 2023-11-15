@@ -7,6 +7,20 @@ body {
     padding: 3%;
 }
 
+#search {
+    width: 300px;
+    height: 25px;
+    margin-top: 2%;
+    border-radius: 5px;
+}
+
+#submit {
+    height: 28px;
+    width: 75px;
+    background-color: antiquewhite;
+    border-radius: 5px;
+}
+
 header, form {
     text-align: center;
 }
