@@ -97,3 +97,22 @@ page-card > img {
     border-radius: 5px;
     border: 1px solid #ccc090;
 }
+
+#refresh {
+    height: 28px;
+    max-width: 128px;
+    background-color: antiquewhite;
+    border-radius: 5px;
+    transition: ease-in-out 330ms;
+    padding: 1%;
+    margin-top: 2%;
+    line-height: 0;
+}
+
+#refresh:hover {
+    background-color: #fff;
+    box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 100px #03e9f4;
+}
